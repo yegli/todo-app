@@ -1,0 +1,9 @@
+{"name":"Submit Assignment","dueDate":"2025-03-15","createDate":"2025-03-09","importance":4,"completed":false,"description":"Finish and submit the report","state":"OK","_id":"A1B2C3D4E5"}
+{"name":"Fix Leaky Faucet","dueDate":"2025-03-20","createDate":"2025-03-09","importance":5,"completed":false,"description":"Replace the old washer","state":"OK","_id":"ASDFGHJKLQWERTYU"}
+{"name":"Clean the Kitchen","dueDate":"9323-02-08","createDate":"2025-03-09","importance":5,"completed":true,"description":"","state":"OK","_id":"D41oGP0r2UWPgISw"}
+{"name":"Plan Vacation","dueDate":"2025-06-30","createDate":"2025-03-09","importance":2,"completed":false,"description":"Book hotels and flights","state":"OK","_id":"K1L2M3N4O5"}
+{"name":"Write Blog Post","dueDate":"2025-03-25","createDate":"2025-03-09","importance":4,"completed":false,"description":"Publish a new article on productivity","state":"OK","_id":"LKJHGFDSAZXCVBNM"}
+{"name":"Call Parents","dueDate":"2025-03-12","createDate":"2025-03-09","importance":1,"completed":false,"description":"Catch up with family","state":"OK","_id":"P6Q7R8S9T0"}
+{"name":"Prepare Tax Documents","dueDate":"2025-04-15","createDate":"2025-03-09","importance":5,"completed":true,"description":"Gather all receipts and statements","state":"OK","_id":"QWERTYUIOPLKJHGF"}
+{"name":"Renew Car Insurance","dueDate":"2025-05-10","createDate":"2025-03-09","importance":5,"completed":true,"description":"Ensure coverage is updated","state":"OK","_id":"U1V2W3X4Y5"}
+{"name":"Organize Office Desk","dueDate":"2025-03-18","createDate":"2025-03-09","importance":3,"completed":true,"description":"Declutter and arrange documents","state":"OK","_id":"WRK89KVIKBDHOWJM"}

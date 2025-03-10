@@ -1,0 +1,27 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Vorlage TypeScript Dependency",
+  "main": "index.ts",
+  "scripts": {
+    "start": "tsx index.ts",
+    "lint": "eslint . --ext .ts"
+  },
+  "author": "mgfeller",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^5.0.1",
+    "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.1",
+    "nedb-promises": "^6.2.3"
+  },
+  "devDependencies": {
+    "@types/express-handlebars": "^6.0.2",
+    "@types/express-session": "^1.18.1",
+    "typescript-eslint":  "^8.24.1",
+    "typescript": "^5.7.3",
+    "tsx": "^4.19.2"
+  }
+}

@@ -1,0 +1,42 @@
+<div id="toggles">
+    <a href="/tasks/new">
+        <button type="button">Create New Task</button>
+    </a>
+    <a href="/">
+        <button type="button">Back To Index</button>
+    </a>
+    <button id="style-toggle">Toggle Style</button>
+</div>
+
+<div id="filters">
+    <h3>Filters:</h3>
+    <button data-sort="name">By Name</button>
+    <button data-sort="dueDate">By Due Date</button>
+    <button data-sort="createDate">By Creation Date</button>
+    <button data-sort="importance">By Importance</button>
+    <button id="filterCompleted">
+        {{#if completed}}Hide Completed{{else}}Show Completed{{/if}}
+    </button>
+</div>
+
+<div class="todo-list">
+    <h3>ToDo Items</h3>
+    <ul id="todo-list">
+        {{#each tasks}}
+            <li class="{{#if this.completed}}completed{{else}}not-completed{{/if}} todo-item">
+                <a href="/tasks/editTask?id={{this._id}}">
+                <div class="todo-header">
+                        <span class="todo-title">{{this.name}}</span>
+                        <span class="todo-due">Due: {{this.dueDate}}</span>
+                </div>
+                <div class="todo-meta">
+                    <span class="todo-created">Created: {{this.createDate}}</span>
+                    <span class="todo-importance">Importance: {{this.importance}}</span>
+                </div>
+                <div class="todo-description"> {{#if this.description}} Description: {{this.description}} {{/if}}</div>
+                </a>
+            </li>
+        {{/each}}
+    </ul>
+</div>
+

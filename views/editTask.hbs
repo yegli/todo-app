@@ -1,0 +1,12 @@
+<h2>{{title}}</h2>
+<form id="editTaskForm" action="/tasks/updateTask" method="post">
+    <input type="hidden" name="id" value="{{task._id}}">
+    <input type="text" name="Title" placeholder="What must you do?" value="{{task.name}}" required>
+    <input type="number" name="Importance" placeholder="How important is your task [1-5]" min="1" max="5" value="{{task.importance}}" required>
+    <input type="date" name="DueDate" value="{{task.dueDate}}" required>
+    <label>
+        <input type="checkbox" name="Completed" {{#if task.completed}}checked{{/if}}> Is your task completed?
+    </label>
+    <input type="text" name="Description" placeholder="Add a description to your task" value="{{task.description}}">
+    <button type="submit">Update Task</button>
+</form>
