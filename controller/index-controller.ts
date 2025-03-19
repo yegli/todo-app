@@ -1,9 +1,19 @@
 // Import the task store service
-import { taskStore } from '../services/task-store.js';
+import { taskStore } from '../services/task-store.ts';
 
 export class IndexController {
     showIndex(req, res) {
         res.render("index", { layout: "default", title: "Welcome!" });
+    }
+
+    async changeTheme(req, res) {
+        if (req.userSettings.theme === "dark") {
+            console.log("toggled theme to LIGHT and stored configuration in userSettings")
+            res.userSettings.theme = "light"
+        } else {
+            console.log("toggled theme to DARK and stored configuration in userSettings")
+            res.userSettings.theme = "dark"
+        }
     }
 
     async showTasks(req, res) {
@@ -25,7 +35,7 @@ export class IndexController {
 
     async updateTask(req, res) {
         const { id, Title, Importance, DueDate, Completed, Description } = req.body;
-        await taskStore.update(id.trim(), Title, DueDate, parseInt(Importance, 10), Completed === "on", Description);
+        await taskStore.update(id.trim(), Title, DueDate, parseInt(Importance, 10), Completed, Description);
         res.redirect("/tasks");
     }
 

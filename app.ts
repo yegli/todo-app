@@ -4,9 +4,9 @@ import path from 'path';
 import session from 'express-session';
 import exphbs from 'express-handlebars';
 
-import {indexRoutes} from './routes/index-routes.js';
-import {helpers} from './utils/handlebar-util.js'
-import {sessionUserSettings} from './utils/session-middleware.index.js'
+import {indexRoutes} from "./routes/index-routes.ts";
+import {helpers} from './utils/handlebar-util.ts'
+import {sessionUserSettings} from './utils/session-middleware.index.ts'
 
 
 export const app = express();

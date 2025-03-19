@@ -3,6 +3,7 @@
     "target": "ES2022",
     "noEmit": true,
     "module": "ESNext",
+    "allowImportingTsExtensions": true,
     "moduleResolution": "Node",
     "esModuleInterop": true
   },

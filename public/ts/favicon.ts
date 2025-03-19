@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const frames = [
+document.addEventListener("DOMContentLoaded", () : void => {
+    const frames : string[] = [
         "/images/favicon-frames/frame_0.gif",
         "/images/favicon-frames/frame_1.gif",
         "/images/favicon-frames/frame_2.gif",
@@ -10,9 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
         "/images/favicon-frames/frame_7.gif",
     ];
 
-    let index = 0;
-    function animateFavicon() {
-        const favicon = document.querySelector("link[rel='icon']");
+    let index : number = 0;
+    function animateFavicon() : void {
+        const favicon = document.querySelector("link[rel='icon']") as HTMLLinkElement;
+
         if (!favicon) return;
 
         favicon.href = frames[index];
