@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="animation3.css" />
+    <title>Animation</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        #block {
+            background-color: blue;
+            margin: 8rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 4rem;
+            width: 4rem;
+            transition-duration: 2s;
+            transition-timing-function: ease-in;
+        }
+        #block:hover {
+            background-color: green;
+            transform: scale(3);
+        }
+        #loading:hover {
+            transform: translate(20px, 0px);
+        }
+
+        #loading {
+            transition-delay: 1s;
+            transition-property: transform;
+            transition-timing-function: linear;
+            transition-duration: 1s;
+        }
+    </style>
+</head>
+<body>
+<div id="block">
+    <p id="loading">loading</p>
+</div>
+</body>
+</html>

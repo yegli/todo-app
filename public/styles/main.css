@@ -5,6 +5,7 @@ body {
     padding: 10px;
 }
 
+/* Buttons */
 button {
     background-color: #007bff;
     color: white;
@@ -17,15 +18,63 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
     max-width: 200px;
     max-height: 100px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
+/* Toggle Button Container */
+#toggles {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 30px auto;
+    max-width: 800px;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#toggles a {
+    text-decoration: none;
+}
+
+/* Filter Button Container */
+#filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 16px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    width: 100%;
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+h2 {
+    width: 100%;
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Form Styling */
 form {
     background-color: #ffffff;
     padding: 20px;
@@ -39,19 +88,9 @@ form {
     gap: 12px;
 }
 
-#newTaskForm button:hover {
-    background-color: #0056b3;
-}
-
-h2 {
-    text-align: center;
-    color: #333;
-}
-
 input[type="text"],
 input[type="number"],
-input[type="date"],
-button {
+input[type="date"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -77,31 +116,97 @@ label {
 
 input[type="checkbox"] {
     margin-right: 8px;
-    width: auto; /* Ensures checkbox stays small */
+    width: auto;
 }
 
+/* Task List Container */
+.todo-list {
+    margin: 40px auto;
+    padding: 24px;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
 
-#newTaskForm button {
-    background-color: #007bff;
-    color: white;
+/* Task Items */
+#todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.todo-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    border-left: 6px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.todo-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.completed {
+    border-left-color: #28a745;
+}
+
+.not-completed {
+    border-left-color: #dc3545;
+}
+
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.todo-title {
+    font-size: 18px;
     font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    color: #222;
 }
 
-button:hover {
-    background-color: #0056b3;
+.todo-due {
+    font-size: 14px;
+    color: #666;
 }
 
+.todo-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #777;
+    margin-top: 4px;
+}
+
+.todo-description {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Responsive */
 @media (max-width: 480px) {
     form {
         max-width: 90%;
     }
+
+    #toggles, #filters {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
-
-/* Dark Theme */
+/* Theme Styles */
 body.dark button {
     background-color: #444;
     color: white;
@@ -111,7 +216,6 @@ body.dark button:hover {
     background-color: #222;
 }
 
-/* Light Theme */
 body.light button {
     background-color: #007bff;
     color: white;
@@ -121,8 +225,8 @@ body.light button:hover {
     background-color: #0056b3;
 }
 
+/* Misc */
 img {
     max-width: 100%;
     border-radius: 8px;
 }
-

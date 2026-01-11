@@ -1,22 +1,30 @@
 <div id="toggles">
-    <a href="/tasks/new">
+    <a href="/tasks/new?orderBy={{orderBy}}&orderDirection={{orderDirection}}&showCompleted={{showCompleted}}">
         <button type="button">Create New Task</button>
     </a>
-    <a href="/">
-        <button type="button">Back To Index</button>
+    <a href="/tasks?theme={{#if_eq theme 'dark'}}light{{else}}dark{{/if_eq}}&orderBy={{orderBy}}&orderDirection={{orderDirection}}&showCompleted={{showCompleted}}">
+        <button id="style-toggle">Toggle Style</button>
     </a>
-    <button id="style-toggle">Toggle Style</button>
 </div>
 
-<div id="filters">
-    <h3>Filters:</h3>
-    <button data-sort="name">By Name</button>
-    <button data-sort="dueDate">By Due Date</button>
-    <button data-sort="createDate">By Creation Date</button>
-    <button data-sort="importance">By Importance</button>
-    <button id="filterCompleted">
-        {{#if completed}}Hide Completed{{else}}Show Completed{{/if}}
-    </button>
+<div class="filterButtons" id="filters">
+    <a href="/?orderBy=name&orderDirection={{#if_eq orderBy 'name'}}{{#if_eq orderDirection 1}}-1{{else}}1{{/if_eq}}{{else}}1{{/if_eq}}">
+        <button type="button" name="byName" value="Name">Name {{#if_eq orderBy 'name'}}{{#if_eq orderDirection 1}}↑{{else}}↓{{/if_eq}}{{/if_eq}}</button>
+    </a>
+    <a href="/?orderBy=dueDate&orderDirection={{#if_eq orderBy 'dueDate'}}{{#if_eq orderDirection 1}}-1{{else}}1{{/if_eq}}{{else}}1{{/if_eq}}">
+        <button type="button" name="byDate" value="By Due Date">By Due Date {{#if_eq orderBy 'dueDate'}}{{#if_eq orderDirection 1}}↑{{else}}↓{{/if_eq}}{{/if_eq}}</button>
+    </a>
+    <a href="/?orderBy=creationDate&orderDirection={{#if_eq orderBy 'creationDate'}}{{#if_eq orderDirection 1}}-1{{else}}1{{/if_eq}}{{else}}1{{/if_eq}}">
+        <button type="button" name="byCreationDate" value="By Creation Date">By Creation Date {{#if_eq orderBy 'creationDate'}}{{#if_eq orderDirection 1}}↑{{else}}↓{{/if_eq}}{{/if_eq}}</button>
+    </a>
+    <a href="/?orderBy=importance&orderDirection={{#if_eq orderBy 'importance'}}{{#if_eq orderDirection 1}}-1{{else}}1{{/if_eq}}{{else}}1{{/if_eq}}">
+        <button type="button" name="byImportance" value="By Importance">By Importance {{#if_eq orderBy 'importance'}}{{#if_eq orderDirection 1}}↑{{else}}↓{{/if_eq}}{{/if_eq}}</button>
+    </a>
+    <a href="/?showCompleted={{#if showCompleted}}false{{else}}true{{/if}}&orderBy={{orderBy}}&orderDirection={{orderDirection}}">
+        <button type="button" name="showCompleted" value="Show Completed">
+            {{#if showCompleted}}Hide Completed{{else}}Show Completed{{/if}}
+        </button>
+    </a>
 </div>
 
 <div class="todo-list">
@@ -27,11 +35,11 @@
                 <a href="/tasks/editTask?id={{this._id}}">
                 <div class="todo-header">
                         <span class="todo-title">{{this.name}}</span>
-                        <span class="todo-due">Due: {{this.dueDate}}</span>
+                        <span class="todo-due">Due: {{formatDate this.dueDate}}</span>
                 </div>
                 <div class="todo-meta">
                     <span class="todo-created">Created: {{this.createDate}}</span>
-                    <span class="todo-importance">Importance: {{this.importance}}</span>
+                    <span class="todo-importance">Importance: {{importanceIcons this.importance}}</span>
                 </div>
                 <div class="todo-description"> {{#if this.description}} Description: {{this.description}} {{/if}}</div>
                 </a>

@@ -3,7 +3,7 @@ const router : Router = express.Router();
 
 import {indexController} from '../controller/index-controller.ts';
 
-router.get("/", indexController.showIndex);
+router.get("/", indexController.showTasks);
 router.get("/tasks", indexController.showTasks);
 router.get("/tasks/new", indexController.createTask);
 router.get("/tasks/editTask", indexController.editTask);

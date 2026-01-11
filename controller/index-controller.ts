@@ -6,25 +6,28 @@ export class IndexController {
         res.render("index", { layout: "default", title: "Welcome!" });
     }
 
-    async changeTheme(req, res) {
-        if (req.userSettings.theme === "dark") {
-            console.log("toggled theme to LIGHT and stored configuration in userSettings")
-            res.userSettings.theme = "light"
-        } else {
-            console.log("toggled theme to DARK and stored configuration in userSettings")
-            res.userSettings.theme = "dark"
-        }
-    }
-
     async showTasks(req, res) {
-        let { completed, orderBy, orderDirection } = req.query;
+        const showCompleted = req.query.showCompleted !== undefined ? 
+            req.query.showCompleted === 'true' : 
+            req.userSettings.showCompleted;
+        const orderBy = req.query.orderBy ?? req.userSettings.orderBy;
+        const orderDirection = parseInt(req.query.orderDirection as string, 10) ?? req.userSettings.orderDirection;
+
         let sortOptions = {};
         if (orderBy) {
-            sortOptions[orderBy] = orderDirection === 'desc' ? -1 : 1;
+            sortOptions[orderBy] = orderDirection;
         }
-        const filter = completed !== undefined ? {} : { completed: false };
+
+        const filter = showCompleted ? {} : { completed: false };
         const tasks = await taskStore.all(filter, sortOptions);
-        res.render("tasks", { tasks, title: "ToDo List App", orderBy, orderDirection, completed });
+
+        res.render("tasks", {
+            tasks,
+            title: "ToDo List App",
+            orderBy,
+            orderDirection,
+            showCompleted
+        });
     }
 
     async editTask(req, res) {
@@ -36,11 +39,17 @@ export class IndexController {
     async updateTask(req, res) {
         const { id, Title, Importance, DueDate, Completed, Description } = req.body;
         await taskStore.update(id.trim(), Title, DueDate, parseInt(Importance, 10), Completed, Description);
-        res.redirect("/tasks");
+        res.redirect(`/tasks?orderBy=${req.userSettings.orderBy}&orderDirection=${req.userSettings.orderDirection}&showCompleted=${req.userSettings.showCompleted}`);
     }
 
     createTask(req, res) {
-        res.render("createTask", {title: "Create a new Task"});
+        const { orderBy, orderDirection, showCompleted } = req.query;
+        res.render("createTask", {
+            title: "Create a new Task",
+            orderBy,
+            orderDirection,
+            showCompleted
+        });
     }
 
     async addTask(req, res) {
@@ -55,7 +64,7 @@ export class IndexController {
             };
             await taskStore.add(taskData.name, taskData.dueDate, taskData.importance, taskData.completed, taskData.description);
         } finally {
-            res.redirect("/tasks");
+            res.redirect(`/tasks?orderBy=${req.userSettings.orderBy}&orderDirection=${req.userSettings.orderDirection}&showCompleted=${req.userSettings.showCompleted}`);
         }
     }
 }

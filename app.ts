@@ -14,7 +14,8 @@ const hbs = exphbs.create({
     extname: '.hbs',
     defaultLayout: "default",
     helpers: {
-        ...helpers
+        ...helpers,
+        importanceIcons: (importance: number) => '🦍'.repeat(Math.min(Math.max(importance, 1), 5))
     }
 });
 
